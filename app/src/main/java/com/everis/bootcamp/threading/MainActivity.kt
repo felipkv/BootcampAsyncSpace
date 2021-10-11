@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import androidx.core.view.isVisible
+import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -22,9 +23,13 @@ class MainActivity : AppCompatActivity() {
 
     //TODO: 013 - Criar função para exibir os dados carregados
     fun showData(list: List<AstroPeople>) {
-        textview_data.text = "" // limpar a caixa de texto toda vez que apertar o botão antes de gerar a nova resposta(append juntaria tudo numa lista)
-        list?.forEach { people ->
+        //textview_data.text = "" // limpar a caixa de texto toda vez que apertar o botão antes de gerar a nova resposta(append juntaria tudo numa lista)
+      /*  list?.forEach { people ->
             textview_data.append("${people.name} - ${people.craft} \n\n")
+        }*/
+        recyclerView.apply {
+            layoutManager = LinearLayoutManager(this@MainActivity)
+            adapter = UsersAdapter(list)
         }
     }
 
